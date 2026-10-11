@@ -3,7 +3,7 @@
 ###############################
 # CONFIG
 ###############################
-IMAGE="${IMAGE:-archlinux}"
+IMAGE="${IMAGE:-testarchlinux}"
 TARGET="${TARGET:-ikki.sh}"
 
 set -o pipefail
@@ -13,7 +13,9 @@ set -o pipefail
 ###############################
 main()
 {
-  docker run -it --rm -v "$(pwd):/root/c" "$IMAGE" bash -c "/root/c/$TARGET"
+  docker build -t testarchlinux .
+  docker run -it --rm -v "$(pwd):/root/c" "$IMAGE" "bash -c /root/c/$TARGET"
+  docker rmi testarchlinux
 }
 
 main "$@"

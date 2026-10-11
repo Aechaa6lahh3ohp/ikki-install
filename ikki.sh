@@ -12,10 +12,10 @@ set -o pipefail
 ###############################
 # STATUS FUNCTION
 ###############################
-info()    { printf "[   INFO   ] %s\n" "$*"; }
-success() { printf "[ SUCCESS  ] %s\n" "$*"; }
-warning() { printf "[ WARNING  ] %s\n" "$*"; }
-error()   { printf "[  ERROR   ] %s\n" "$*"; }
+info()    { printf "[i] INFO %s\n" "$*"; }
+success() { printf "[*] SUCCESS %s\n" "$*"; }
+warning() { printf "[!] WARNING %s\n" "$*"; }
+error()   { printf "[X] ERROR %s\n" "$*"; }
 
 banner()
 {
@@ -31,12 +31,25 @@ banner()
 # AI AGENT INSTALL
 ###############################
 
-ai-agent()
+ai-agent-install()
 {
-  curl -fsSL https://opencode.ai/v2/install | bash
-  curl -fsSL https://raw.githubusercontent.com/s0ld13rr/pentestcode/main/install.sh | bash
+  info "start install to AI AGENTS"
+  curl -fsSL https://opencode.ai/v2/install | bash || return 1
+  curl -fsSL https://raw.githubusercontent.com/s0ld13rr/pentestcode/main/install.sh | bash || return 1
 }
 
+nvim-install()
+{
+  info "start install to neovim config"
+
+  local repo_dir=/tmp/nvim-config
+
+  git clone https://github.com/SakuraSystemz/blackarch-config-nvim "$repo_dir" || return 1
+  cd "$repo_dir" || return 1
+
+  mkdir -p "$HOME/.config/nvim" || return 1
+  cp -vr ./nvim/. "$HOME/.config/nvim/" || return 1
+}
 
 ###############################
 # main()
@@ -44,8 +57,7 @@ ai-agent()
 main()
 {
   banner
-  info "start install to AI AGENTS"
-  if ai-agent; then
+  if ai-agent-install && nvim-install; then
     success "Installation completed"
   else
     error "Installation failed"
