@@ -55,7 +55,7 @@ nvim-install()
 
   local repo_dir=/tmp/nvim-config
 
-  git clone https://github.com/SakuraSystemz/blackarch-config-nvim "$repo_dir" || return 1
+  git clone https://github.com/Aechaa6lahh3ohp/blackarch-config-nvim "$repo_dir" || return 1
   cd "$repo_dir" || return 1
 
   mkdir -p "$HOME/.config/nvim" || return 1
