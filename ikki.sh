@@ -24,7 +24,7 @@ set -o pipefail
 # STATUS FUNCTION
 ###############################
 info()    { printf "${blue}[i] INFO %s${reset} $*${reset}\n"; }
-success() { printf "${green}[*] SUCCESS %s${reset} $*${reset}\n"; }
+success() { printf "${green}[+] SUCCESS %s${reset} $*${reset}\n"; }
 warning() { printf "${yellow}[!] WARNING %s${reset} $*${reset}\n"; }
 error()   { printf "${red}[X] ERROR %s${reset} $*${reset}\n"; }
 
