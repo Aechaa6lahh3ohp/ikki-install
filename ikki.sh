@@ -5,17 +5,28 @@
 ###############################
 
 green='\e[32m'
+red='\e[31m'
+yellow='\e[33m'
+blue='\e[34m'
+lgreen='\e[92m'
+lyellow='\e[93m'
+lblue='\e[94m'
+lmagenta='\e[95m'
+lcyan='\e[96m'
+blink_red='\033[05;31m'
+restore='\033[0m'
 reset='\e[0m'
+
 
 set -o pipefail
 
 ###############################
 # STATUS FUNCTION
 ###############################
-info()    { printf "[i] INFO %s\n" "$*"; }
-success() { printf "[*] SUCCESS %s\n" "$*"; }
-warning() { printf "[!] WARNING %s\n" "$*"; }
-error()   { printf "[X] ERROR %s\n" "$*"; }
+info()    { printf "${blue}[i] INFO %s${reset} $*${reset}\n"; }
+success() { printf "${green}[*] SUCCESS %s${reset} $*${reset}\n"; }
+warning() { printf "${yellow}[!] WARNING %s${reset} $*${reset}\n"; }
+error()   { printf "${red}[X] ERROR %s${reset} $*${reset}\n"; }
 
 banner()
 {
@@ -48,7 +59,7 @@ nvim-install()
   cd "$repo_dir" || return 1
 
   mkdir -p "$HOME/.config/nvim" || return 1
-  cp -vr ./nvim "$HOME/.config/nvim/" || return 1
+  cp -vr ./nvim "$HOME/.config/" || return 1
 }
 
 ###############################
