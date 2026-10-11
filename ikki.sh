@@ -49,6 +49,10 @@ ai-agent-install()
   curl -fsSL https://raw.githubusercontent.com/s0ld13rr/pentestcode/main/install.sh | bash || return 1
 }
 
+###############################
+# NEOVIM CONFIG INSTALL
+###############################
+
 nvim-install()
 {
   info "start install to neovim config"
