@@ -48,7 +48,7 @@ nvim-install()
   cd "$repo_dir" || return 1
 
   mkdir -p "$HOME/.config/nvim" || return 1
-  cp -vr ./nvim/. "$HOME/.config/nvim/" || return 1
+  cp -vr ./nvim "$HOME/.config/nvim/" || return 1
 }
 
 ###############################

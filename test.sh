@@ -13,9 +13,9 @@ set -o pipefail
 ###############################
 main()
 {
-  docker build -t testarchlinux .
+  docker build -t $IMAGE .
   docker run -it --rm -v "$(pwd):/root/c" "$IMAGE" "bash -c /root/c/$TARGET"
-  docker rmi testarchlinux
+  docker rmi $IMAGE
 }
 
 main "$@"
