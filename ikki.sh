@@ -66,6 +66,12 @@ nvim-install()
   cp -vr ./nvim "$HOME/.config/" || return 1
 }
 
+gist-install()
+{
+  curl -fsSL -o /usr/bin/ip_info.sh https://gist.githubusercontent.com/Aechaa6lahh3ohp/7314bee1536be96796e9194be04d370f/raw/1e03fc61ffed50e1e64378d1ab153c109306c3d0/ip_info.sh || retrun 1
+  chmod +x /usr/bin/ip_info.sh || return 1
+}
+
 ###############################
 # main()
 ###############################
